@@ -24,8 +24,8 @@ const timer = document.querySelector(".timer");
 let interval;
 restartTheGame();
 
+// @description function to start a new play 
 function restartTheGame(){
-
   let fragment = document.createDocumentFragment();
   cards=shuffle(cards);
   cardDeck.innerHTML="";
@@ -53,6 +53,7 @@ function restartTheGame(){
   clearInterval(interval);
 }
 
+// @description shuffles cards
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -66,6 +67,7 @@ function shuffle(array) {
   return array;
 }
 
+// @description toggles open and show class to display cards
 function onCardClick(event){
   this.classList.toggle("open");
   this.classList.toggle("show");
@@ -82,6 +84,7 @@ function onCardClick(event){
   }
 }
 
+// @description count player's moves
 function moveCounter(){
   moves++;
   counter.innerHTML = moves;
@@ -107,6 +110,7 @@ function moveCounter(){
   }
 }
 
+// @description game timer
 function startTimer(){
   interval = setInterval(function(){
     timer.innerHTML = "Time "+minute+" : "+second;
@@ -122,6 +126,7 @@ function startTimer(){
   },1000);
 }
 
+// @description when cards match
 function matched(){
   openedCards[0].classList.add("match", "disabled");
   openedCards[1].classList.add("match", "disabled");
@@ -130,7 +135,7 @@ function matched(){
   openedCards = [];
 }
 
-
+// description when cards don't match
 function unmatched(){
   openedCards[0].classList.add("unmatched");
   openedCards[1].classList.add("unmatched");
@@ -143,6 +148,7 @@ function unmatched(){
   },1100);
 }
 
+// @description disable cards temporarily
 function disable(){
   cards.forEach(function (card)
   {
@@ -150,7 +156,7 @@ function disable(){
   });
 }
 
-
+// @description enable cards and disable matched cards
 function enable(){
   cards.forEach(function (card)
   {
@@ -161,6 +167,7 @@ function enable(){
   });
 }
 
+// @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
   if (matchedCard.length == 16){
     clearInterval(interval);
@@ -173,6 +180,7 @@ function congratulations(){
   }
 }
 
+// @desciption for user to play Again 
 function playAgain(){
   screen.classList.remove("show");
   restartTheGame();
