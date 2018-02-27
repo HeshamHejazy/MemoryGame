@@ -26,6 +26,7 @@ restartTheGame();
 
 // @description function to start a new play 
 function restartTheGame(){
+  openedCards=[];
   let fragment = document.createDocumentFragment();
   cards=shuffle(cards);
   cardDeck.innerHTML="";
